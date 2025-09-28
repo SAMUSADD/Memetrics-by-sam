@@ -1,0 +1,102 @@
+*** Begin Patch
+*** Update File: frontend/assets/js/app.js
+@@
+-const state = { user: null, mode: 'Student', mitraHistory: [], demoMode: false };
++const state = { user: null, mode: 'Student', mitraHistory: [], demoMode: false };
+@@
+-async function render() {
+-  if (!state.user && route() !== 'manifesto') {
++async function render() {
++  if (!state.user && !state.demoMode && route() !== 'manifesto') {
+     go('manifesto');
+   }
+   const [view, after] = routes[route()] || routes.feed;
+   const html = await view(state);
+@@
+-function initNav() {
+-  $$('.bottombar .tab[data-route]').forEach(t => {
+-    t.onclick = () => {
+-      if (!state.user && t.dataset.route !== 'manifesto') {
+-        toast('Sign in to explore this area.');
+-        go('manifesto');
+-        return;
+-      }
+-      go(t.dataset.route);
+-    };
+-  });
++function initNav() {
++  $$('.bottombar .tab[data-route]').forEach(t => {
++    t.onclick = () => {
++      if (!state.user && !state.demoMode && t.dataset.route !== 'manifesto') {
++        toast('Sign in to explore this area.');
++        go('manifesto');
++        return;
++      }
++      go(t.dataset.route);
++    };
++  });
+   window.addEventListener('hashchange', render);
+   const mitraBtn = $('#mitraCenter');
+   if (mitraBtn) {
+     mitraBtn.onclick = () => {
+-      if (!state.user) {
++      if (!state.user && !state.demoMode) {
+         toast('Sign in to talk with Mitra.');
+         return;
+       }
+       $('#mitraPanel').classList.toggle('hidden');
+     };
+   }
++  const signinBtn = $('#openSignin');
++  if (signinBtn) {
++    signinBtn.onclick = () => {
++      $('#authModal').classList.add('show');
++    };
++  }
+   highlightNav();
+ }
+@@
+-    panel.innerHTML = `<div class="mitra-head"><span class="chip accent">Mitra</span><span class="meta-hint">DVI copilot ?? answers everything</span></div>
++    panel.innerHTML = `<div class="mitra-head"><span class="chip accent">Mitra</span><span class="meta-hint">DVI copilot &mdash; answers everything</span></div>
+@@
+-async function ensureAuth() {
+-  const modal = $('#authModal');
+-  const saved = localStorage.getItem('mm_user_v3');
+-  const exploreBtn = $('#exploreBtn');
+-  if (exploreBtn) {
+-    exploreBtn.onclick = () => {
+-      state.demoMode = true;
+-      if (modal) {
+-        modal.classList.remove('show');
+-      }
+-      go('manifesto');
+-      render();
+-    };
+-  }
++async function ensureAuth() {
++  const modal = $('#authModal');
++  const saved = localStorage.getItem('mm_user_v3');
++  const exploreBtn = $('#exploreBtn');
++  if (exploreBtn) {
++    exploreBtn.onclick = () => {
++      state.demoMode = true;
++      if (modal) {
++        modal.classList.remove('show');
++      }
++      go('manifesto');
++      render();
++    };
++  }
+   if (saved) {
+     state.user = JSON.parse(saved);
+     if (modal) {
+       modal.classList.remove('show');
+     }
+     return;
+   }
++  if (!modal) {
++    return;
++  }
+   $('#verifyBtn').onclick = async () => {
+     state.demoMode = false;
+*** End Patch

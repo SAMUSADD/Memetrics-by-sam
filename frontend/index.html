@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MeMetrics • Dynamic Value Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script>
+    window.API_BASE = window.API_BASE || window.location.origin;
+  </script>
+</head>
+<body>
+  <div class="bg-system" aria-hidden="true">
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-orb orb-three"></div>
+    <div class="bg-burst"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <div class="app-shell">
+    <header class="topbar glass" role="banner">
+      <div class="brand" aria-label="MeMetrics logo">
+        <div class="brand-mark" aria-hidden="true">M</div>
+        <div class="brand-copy">
+          <span class="brand-title">MeMetrics</span>
+          <span class="brand-sub">Dynamic Value Index for invisible talent</span>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button id="themeToggle" class="toolbar-pill ghost" type="button">Dark mode</button>
+        <button id="signinBtn" class="toolbar-pill" type="button">Sign in</button>
+        <button id="modeToggle" class="toolbar-pill accent" type="button">Investor mode</button>
+      </div>
+    </header>
+
+    <main id="view" class="view" role="main" aria-live="polite"></main>
+
+    <aside id="mitraPanel" class="mitra glass" role="complementary" aria-live="polite">
+      <div class="mitra-head">
+        <div>
+          <span class="chip">Mitra • AI Guardian</span>
+          <p>Your coach for DVI, sponsors, and inclusive finance.</p>
+        </div>
+        <button id="mitraClose" class="toolbar-pill ghost" type="button">Close</button>
+      </div>
+      <div class="mitra-body">
+        <div id="mitraStream" class="mitra-stream"></div>
+        <div id="mitraSuggestions" class="mitra-suggestions"></div>
+      </div>
+      <div class="mitra-foot">
+        <div id="mitraPrompts" class="mitra-prompts"></div>
+        <form id="mitraForm" class="mitra-form">
+          <input id="mitraInput" type="text" placeholder="Ask Mitra for a +50 DVI plan" autocomplete="off" />
+          <button class="pill" type="submit">Send</button>
+        </form>
+        <div id="mitraStatus" class="mitra-status"></div>
+      </div>
+    </aside>
+
+    <nav class="dock glass" aria-label="primary">
+      <button type="button" data-nav="manifesto">
+        <span class="icon">📜</span>
+        <span>Manifesto</span>
+      </button>
+      <button type="button" data-nav="feed">
+        <span class="icon">🧭</span>
+        <span>Feed</span>
+      </button>
+      <button type="button" data-nav="profile">
+        <span class="icon">👤</span>
+        <span>Profile</span>
+      </button>
+      <button id="mitraLaunch" class="mitra-trigger" type="button" aria-label="Open Mitra">
+        <svg class="mitra-icon" viewBox="0 0 80 80" role="presentation" focusable="false">
+          <defs>
+            <radialGradient id="mitra-orb" cx="50%" cy="50%" r="65%">
+              <stop offset="0%" stop-color="#68dcd5"/>
+              <stop offset="100%" stop-color="#3d78ff"/>
+            </radialGradient>
+          </defs>
+          <circle cx="40" cy="40" r="34" fill="url(#mitra-orb)"/>
+          <path d="M40 26l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#ffffff"/>
+        </svg>
+      </button>
+      <button type="button" data-nav="opportunities">
+        <span class="icon">🚀</span>
+        <span>Opportunities</span>
+      </button>
+      <button type="button" data-nav="banking">
+        <span class="icon">💳</span>
+        <span>Banking</span>
+      </button>
+      <button type="button" data-nav="investor">
+        <span class="icon">🌐</span>
+        <span>Investor</span>
+      </button>
+    </nav>
+  </div>
+
+  <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+  <div id="authModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-card glass">
+      <h2 id="authTitle">Sign in to MeMetrics</h2>
+      <p>Set your name so your DVI journey is saved and Mitra can coach you.</p>
+      <input id="authName" type="text" placeholder="Your full name" autocomplete="name" />
+      <div class="modal-actions">
+        <button id="authConfirm" class="pill" type="button">Continue</button>
+        <button id="authCancel" class="toolbar-pill ghost" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
