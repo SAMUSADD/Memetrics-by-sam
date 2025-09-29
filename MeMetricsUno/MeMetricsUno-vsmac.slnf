@@ -1,0 +1,16 @@
+{
+  "solution": {
+    "path": "MeMetricsUno.sln",
+    "projects": [
+		"MeMetricsUno\\MeMetricsUno.csproj",
+
+		"MeMetricsUno.Mobile\\MeMetricsUno.Mobile.csproj",
+
+		"MeMetricsUno.Wasm\\MeMetricsUno.Wasm.csproj",
+
+		"MeMetricsUno.Skia.Gtk\\MeMetricsUno.Skia.Gtk.csproj",
+
+		"MeMetricsUno.Skia.Gtk\\MeMetricsUno.Skia.Gtk.csproj",
+    ]
+  }
+}
