@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "MeMetricsUnoFull.Windows": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

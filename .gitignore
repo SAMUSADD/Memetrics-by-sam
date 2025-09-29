@@ -1,0 +1,33 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio / IDE
+*.user
+*.suo
+*.vscode/
+*.vs/
+*.nupkg
+*.log
+
+# Uno Platform generated files
+*.g.cs
+*.g.i.cs
+
+# NuGet packages
+*.nupkg
+packages/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Others
+*.cache
+*.db
+*.pdb
+*.exe
+*.dll
+*.apk
+*.app
+*.ipa
